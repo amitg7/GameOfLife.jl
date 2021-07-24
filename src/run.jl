@@ -1,19 +1,13 @@
-function num_of_live_neighbours(grid::Grid, i, j)
-    nn = neighbours(grid, i, j)
-    return sum([grid[n] for n in nn])
-end
-
-
 function cell_next_value(grid::Grid, i, j)
     cell_is_live = grid[i, j]
-    num_live = num_of_live_neighbours(grid, i, j)
+    num_of_live_neighbours = sum(neighbours(grid, i, j))
 
     # Any live cell with two or three live neighbours survives
-    if cell_is_live && num_live in [2, 3]
+    if cell_is_live && num_of_live_neighbours in [2, 3]
         return true
     
     # Any dead cell with three live neighbours becomes a live cell
-    elseif !cell_is_live && num_live == 3
+    elseif !cell_is_live && num_of_live_neighbours == 3
         return true
     
     # All other live cells die in the next generation. Similarly, all other dead cells stay dead
@@ -28,7 +22,7 @@ function evolve_one_step(grid::Grid)
 
     next_grid = copy(grid)
 
-    for i=1:N, j=1:M
+    for i = 1:N, j = 1:M
         next_grid[i, j] = cell_next_value(grid, i, j)
     end
 
