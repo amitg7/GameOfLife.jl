@@ -47,8 +47,3 @@ end
 function Base.display(grid::Grid)
     display(grid.cells)
 end
-
-
-struct G{T} <: AbstractMatrix{T}
-    cells::Array{T, 2}
-end
