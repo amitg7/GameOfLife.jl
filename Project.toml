@@ -1,0 +1,7 @@
+name = "GameOfLife"
+uuid = "00a6be30-e736-11eb-1e76-6d4aadb30a30"
+authors = ["Amit"]
+version = "0.1.0"
+
+[deps]
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
